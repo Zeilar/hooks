@@ -30,6 +30,9 @@
 	},
 	"author": "Philip",
 	"module": "dist/hooks.esm.js",
+	"publishConfig": {
+		"access": "public"
+	},
 	"size-limit": [
 		{
 			"path": "dist/hooks.cjs.production.min.js",
