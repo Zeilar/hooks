@@ -5,3 +5,4 @@ export * from "./useTimeout";
 export * from "./useArray";
 export * from "./useObject";
 export * from "./useFetch";
+export * from "./useConnected";
