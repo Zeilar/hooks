@@ -8,6 +8,12 @@
 		"dist",
 		"src"
 	],
+	"keywords": [
+		"react",
+		"hooks",
+		"react-hooks",
+		"typescript"
+	],
 	"engines": {
 		"node": ">=10"
 	},
