@@ -2,9 +2,11 @@
 
 ## useArray
 
-## useEventListener
-
 ## useFetch
+
+## useGlobalEvent
+
+## useIsOnline
 
 ## useLocalStorage
 
@@ -15,5 +17,3 @@
 ## useTimeout
 
 ## useTitle
-
-## useIsOnline
