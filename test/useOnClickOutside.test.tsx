@@ -1,8 +1,29 @@
 import React from "react";
-import UseOnClickOutside from "../mock/components/UseOnClickOutside";
 import { fireEvent, render } from "@testing-library/react";
+import { useOnClickOutside, Options } from "../src/useOnClickOutside";
+
+interface UseOnClickOutsideProps {
+	callback(): void;
+	options?: Options;
+}
+
+export default function UseOnClickOutside({ callback, options }: UseOnClickOutsideProps) {
+	const ref = useOnClickOutside<HTMLDivElement>(callback, options);
+	return (
+		<div>
+			<div data-testid="test" ref={ref} />
+			<div data-testid="outside" />
+		</div>
+	);
+}
 
 describe("it", () => {
+	it("should render without crashing", () => {
+		const fn = jest.fn();
+		const { baseElement } = render(<UseOnClickOutside callback={fn} />);
+		expect(baseElement).toBeTruthy();
+	});
+
 	it("should render without crashing", () => {
 		const fn = jest.fn();
 		const { baseElement } = render(<UseOnClickOutside callback={fn} />);
