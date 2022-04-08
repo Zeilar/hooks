@@ -3,7 +3,11 @@ import { useEffect, useRef } from "react";
 export type Element = HTMLElement | Window | Document;
 export type Event = DocumentEventMap & WindowEventMap;
 
-export function useEventListener(event: keyof Event, callback: () => any, element: Element = window) {
+/**
+ * Useful for avoiding a lot of boilerplate code.
+ * @example useGlobalEvent("click", clickHandler);
+ */
+export function useGlobalEvent(event: keyof Event, callback: () => any, element: Element = window) {
 	const callbackRef = useRef(callback);
 
 	useEffect(() => {
