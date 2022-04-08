@@ -34,14 +34,18 @@ export interface UseFetchErrorReturn<T = any> {
 	success: false;
 }
 
+/**
+ * Useful for client side rendering.
+ * @example const { data, loading, success, error } = useFetch<Post[]>("/api/v1/posts");
+ */
 export function useFetch<T = any>(url: string, config?: RequestInit, fallback?: T) {
 	const [data, setData] = useState<T>(typeof fallback === "function" ? fallback() : fallback);
-	const [loading, setLoading] = useState(true);
 	const [status, setStatus] = useState<Status>("loading");
 	const [configState, setConfigState] = useState(config);
 
 	const success = status === "success";
 	const error = status === "error";
+	const loading = status === "loading";
 
 	useEffect(() => {
 		if (!isEqual(config, configState)) {
@@ -51,7 +55,7 @@ export function useFetch<T = any>(url: string, config?: RequestInit, fallback?: 
 
 	useEffect(() => {
 		(async () => {
-			setLoading(true);
+			setStatus("loading");
 			try {
 				const response = await fetch(url, configState);
 				if (response.ok) {
@@ -65,29 +69,26 @@ export function useFetch<T = any>(url: string, config?: RequestInit, fallback?: 
 			} catch (error) {
 				console.error(error);
 				setStatus("error");
-			} finally {
-				setLoading(false);
 			}
 		})();
 	}, [url, configState]);
 
 	const result = {
 		data,
-		loading,
 		status,
 		success,
 		error
 	};
 
-	if (status === "loading") {
+	if (loading) {
 		return result as UseFetchLoadingReturn<T>;
 	}
 
-	if (status === "success") {
+	if (success) {
 		return result as UseFetchSuccessReturn<T>;
 	}
 
-	if (status === "error") {
+	if (error) {
 		return result as UseFetchErrorReturn<T>;
 	}
 

@@ -2,17 +2,55 @@ import { useState } from "react";
 
 export interface UseArrayReturn<T = any> {
 	state: T[];
+	/**
+	 * Should only be used when absolutely necessary.
+	 */
+	setState: React.Dispatch<React.SetStateAction<T[]>>;
 	push(element: T): void;
 	filter(callback: (value: T, index: number, array: T[]) => boolean): void;
 	remove(index: number): void;
 	empty(): void;
+	sort(compareFn: (a: T, b: T) => number): void;
+	pop(): void;
+	reverse(): void;
+	shift(): void;
+	unshift(): void;
+	fill(value: T, start?: number | undefined, end?: number | undefined): void;
 }
 
-export function useArray<T = any>(defaultValue?: T[]): UseArrayReturn<T> {
-	const [state, setState] = useState(defaultValue ?? []);
+/**
+ * Useful for operations that require mutating the state array.
+ * @example const { state, push, pop, sort, ...rest } = useArray<number>([1, 2, 3]);
+ */
+export function useArray<T = any>(defaultValue: T[] = []): UseArrayReturn<T> {
+	const [state, setState] = useState(defaultValue);
 
-	function push(element: T) {
-		setState(state => [...state, element]);
+	function push(...items: T[]) {
+		setState(state => [...state, ...items]);
+	}
+
+	function pop() {
+		setState(state => {
+			const copy = [...state];
+			copy.pop();
+			return copy;
+		});
+	}
+
+	function shift() {
+		setState(state => {
+			const copy = [...state];
+			copy.shift();
+			return copy;
+		});
+	}
+
+	function unshift() {
+		setState(state => {
+			const copy = [...state];
+			copy.shift();
+			return copy;
+		});
 	}
 
 	function filter(callback: (value: T, index: number, array: T[]) => boolean) {
@@ -27,5 +65,26 @@ export function useArray<T = any>(defaultValue?: T[]): UseArrayReturn<T> {
 		setState([]);
 	}
 
-	return { state, push, filter, remove, empty };
+	function sort(compareFn: (a: T, b: T) => number) {
+		setState(state => {
+			const copy = [...state];
+			return copy.sort(compareFn);
+		});
+	}
+
+	function reverse() {
+		setState(state => {
+			const copy = [...state];
+			return copy.reverse();
+		});
+	}
+
+	function fill(value: T, start?: number, end?: number) {
+		setState(state => {
+			const copy = [...state];
+			return copy.fill(value, start, end);
+		});
+	}
+
+	return { state, push, filter, remove, empty, sort, pop, reverse, shift, unshift, fill, setState };
 }

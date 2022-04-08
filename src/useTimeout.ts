@@ -5,6 +5,10 @@ export interface UseTimeoutReturn {
 	ref: number | undefined;
 }
 
+/**
+ * Useful for any delay related logic. Delay is in milliseconds.
+ * @example const { clear, ref } = useTimeout(firePopup, 5000);
+ */
 export function useTimeout(callback: () => void, delay: number): UseTimeoutReturn {
 	const timeoutRef = useRef<number>();
 
@@ -15,15 +19,16 @@ export function useTimeout(callback: () => void, delay: number): UseTimeoutRetur
 	}
 
 	const start = useCallback(() => {
-		return setTimeout(callback, delay);
+		setTimeout(callback, delay);
 	}, [callback, delay]);
-
-	useEffect(() => clear, []);
 
 	useEffect(() => {
 		clear();
 		start();
 	}, [callback, start]);
+
+	// Unmount
+	useEffect(() => clear, []);
 
 	return { clear, ref: timeoutRef.current };
 }

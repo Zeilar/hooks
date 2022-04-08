@@ -4,6 +4,10 @@ export interface Options {
 	mouseup?: boolean;
 }
 
+/**
+ * Useful for closing menu when clicking outside.
+ * @example const ref = useOnClickOutside(close);
+ */
 export function useOnClickOutside<T extends HTMLElement = HTMLDivElement>(callback: () => void, options: Options = {}) {
 	const ref = useRef<T>(null);
 	const { mouseup } = options;

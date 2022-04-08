@@ -9,8 +9,12 @@ export interface UseObjectReturn<T = AnyObject> {
 	empty(): void;
 }
 
-export function useObject<T = AnyObject>(defaultValue?: T): UseObjectReturn<T> {
-	const [state, setState] = useState(defaultValue ?? ({} as T));
+/**
+ * Useful for operations that require mutating the state object.
+ * @example const { state, set, remove, empty } = useObject<Record<any, any>>();
+ */
+export function useObject<T = AnyObject>(defaultValue: T = {} as T): UseObjectReturn<T> {
+	const [state, setState] = useState(defaultValue);
 
 	function set(key: keyof T, value: any) {
 		setState(state => ({ ...state, [key]: value }));
