@@ -1,8 +1,9 @@
 import { useEffect, useRef } from "react";
 
 export type Element = HTMLElement | Window | Document;
+export type Event = DocumentEventMap & WindowEventMap;
 
-export function useEventListener(event: string, callback: () => {}, element: Element = window) {
+export function useEventListener(event: keyof Event, callback: () => any, element: Element = window) {
 	const callbackRef = useRef(callback);
 
 	useEffect(() => {
