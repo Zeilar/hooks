@@ -15,3 +15,5 @@
 ## useTimeout
 
 ## useTitle
+
+## useIsOnline
