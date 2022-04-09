@@ -4,6 +4,7 @@ export type Theme = "light" | "dark";
 
 /**
  * Useful for dynamically changing theme.
+ * @example const [theme, setTheme] = useTheme();
  */
 export function useTheme(fallback?: Theme) {
 	const [theme, setTheme] = useState<Theme>(() => {
