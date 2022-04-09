@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
  * Useful for avoiding a lot of boilerplate code.
  * @example useEventListener(element, "click", clickHandler);
  */
-export function useGlobalEvent(element: Element, event: keyof GlobalEventHandlersEventMap, callback: () => any) {
+export function useEventListener(element: Element, event: keyof GlobalEventHandlersEventMap, callback: () => any) {
 	const callbackRef = useRef(callback);
 
 	useEffect(() => {
