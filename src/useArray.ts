@@ -19,7 +19,7 @@ export interface UseArrayReturn<T = any> {
 }
 
 /**
- * Useful for operations that require mutating the state array.
+ * Useful for state arrays where you want to use mutational functions.
  * @example const { state, push, pop, sort, ...rest } = useArray<number>([1, 2, 3]);
  */
 export function useArray<T = any>(defaultValue: T[] = []): UseArrayReturn<T> {

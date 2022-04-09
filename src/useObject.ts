@@ -4,6 +4,10 @@ export type AnyObject = Record<any, any>;
 
 export interface UseObjectReturn<T = AnyObject> {
 	state: T;
+	/**
+	 * Should only be used when absolutely necessary.
+	 */
+	setState: React.Dispatch<React.SetStateAction<T>>;
 	set(key: keyof T, value: any): void;
 	remove(key: keyof T): void;
 	empty(): void;
@@ -32,5 +36,5 @@ export function useObject<T = AnyObject>(defaultValue: T = {} as T): UseObjectRe
 		setState({} as T);
 	}
 
-	return { state, set, remove, empty };
+	return { state, set, remove, empty, setState };
 }
