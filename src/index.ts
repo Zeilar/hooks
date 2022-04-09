@@ -6,3 +6,5 @@ export * from "./useArray";
 export * from "./useObject";
 export * from "./useFetch";
 export * from "./useIsOnline";
+export * from "./useImage";
+export * from "./useEventListener";

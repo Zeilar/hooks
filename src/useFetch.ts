@@ -13,25 +13,25 @@ export function isEqual(foo: any, bar: any) {
 export interface UseFetchLoadingReturn<T = any> {
 	data: T | undefined;
 	status: "loading";
-	loading: true;
-	error: false;
-	success: false;
+	isLoading: true;
+	isError: false;
+	isSuccess: false;
 }
 
 export interface UseFetchSuccessReturn<T = any> {
 	data: T;
 	status: "success";
-	loading: false;
-	error: false;
-	success: true;
+	isLoading: false;
+	isError: false;
+	isSuccess: true;
 }
 
 export interface UseFetchErrorReturn<T = any> {
 	data: T | undefined;
 	status: "error";
-	loading: false;
-	error: true;
-	success: false;
+	isLoading: false;
+	isError: true;
+	isSuccess: false;
 }
 
 /**
@@ -42,10 +42,6 @@ export function useFetch<T = any>(url: string, config?: RequestInit, fallback?: 
 	const [data, setData] = useState<T>(typeof fallback === "function" ? fallback() : fallback);
 	const [status, setStatus] = useState<Status>("loading");
 	const [configState, setConfigState] = useState(config);
-
-	const success = status === "success";
-	const error = status === "error";
-	const loading = status === "loading";
 
 	useEffect(() => {
 		if (!isEqual(config, configState)) {
@@ -76,19 +72,20 @@ export function useFetch<T = any>(url: string, config?: RequestInit, fallback?: 
 	const result = {
 		data,
 		status,
-		success,
-		error
+		isLoading: status === "loading",
+		isSuccess: status === "success",
+		isError: status === "error"
 	};
 
-	if (loading) {
+	if (result.isLoading) {
 		return result as UseFetchLoadingReturn<T>;
 	}
 
-	if (success) {
+	if (result.isSuccess) {
 		return result as UseFetchSuccessReturn<T>;
 	}
 
-	if (error) {
+	if (result.isError) {
 		return result as UseFetchErrorReturn<T>;
 	}
 

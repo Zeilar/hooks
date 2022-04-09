@@ -2,9 +2,13 @@
 
 ## useArray
 
+## useEventListener
+
 ## useFetch
 
 ## useGlobalEvent
+
+## useImage
 
 ## useIsOnline
 
