@@ -10,6 +10,8 @@
 
 ### useGlobalEvent
 
+### useHistoryState
+
 ### useImage
 
 ### useIsOnline
@@ -21,8 +23,6 @@
 ### useOnClickOutside
 
 ### useSessionStorage
-
-### useStateHistory
 
 ### useStorage
 
