@@ -1,4 +1,5 @@
 export * from "./useArray";
+export * from "./useDisclosure";
 export * from "./useEventListener";
 export * from "./useFetch";
 export * from "./useGlobalEvent";
@@ -8,10 +9,9 @@ export * from "./useLocalStorage";
 export * from "./useObject";
 export * from "./useOnClickOutside";
 export * from "./useSessionStorage";
+export * from "./useStateHistory";
 export * from "./useStorage";
 export * from "./useTheme";
 export * from "./useTitle";
 export * from "./useTimeout";
 export * from "./useWindowSize";
-export * from "./useDisclosure";
-export * from "./useStateHistory";

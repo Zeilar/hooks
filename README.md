@@ -1,23 +1,35 @@
 # React Hooks
 
-## useArray
+### useArray
 
-## useEventListener
+### useDisclosure
 
-## useFetch
+### useEventListener
 
-## useGlobalEvent
+### useFetch
 
-## useImage
+### useGlobalEvent
 
-## useIsOnline
+### useImage
 
-## useLocalStorage
+### useIsOnline
 
-## useObject
+### useLocalStorage
 
-## useOnClickOutside
+### useObject
 
-## useTimeout
+### useOnClickOutside
 
-## useTitle
+### useSessionStorage
+
+### useStateHistory
+
+### useStorage
+
+### useTheme
+
+### useTitle
+
+### useTimeout
+
+### useWindowSize
