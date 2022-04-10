@@ -3,11 +3,11 @@ import { useState } from "react";
 export type AnyObject = Record<any, any>;
 
 export interface UseObjectReturn<T = AnyObject> {
-	state: T;
 	/**
 	 * Should only be used when absolutely necessary.
 	 */
 	setState: React.Dispatch<React.SetStateAction<T>>;
+	state: T;
 	set(key: keyof T, value: any): void;
 	remove(key: keyof T): void;
 	empty(): void;
@@ -32,6 +32,9 @@ export function useObject<T = AnyObject>(defaultValue: T = {} as T): UseObjectRe
 		});
 	}
 
+	/**
+	 * Keep in mind using this may cause bugs as state is no longer of type T.
+	 */
 	function empty() {
 		setState({} as T);
 	}

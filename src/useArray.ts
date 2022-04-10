@@ -1,12 +1,12 @@
 import { useState } from "react";
 
 export interface UseArrayReturn<T = any> {
-	state: T[];
 	/**
 	 * Should only be used when absolutely necessary.
 	 */
 	setState: React.Dispatch<React.SetStateAction<T[]>>;
-	push(element: T): void;
+	state: T[];
+	push(...items: T[]): void;
 	filter(callback: (value: T, index: number, array: T[]) => boolean): void;
 	remove(index: number): void;
 	empty(): void;
