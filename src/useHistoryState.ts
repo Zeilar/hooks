@@ -44,8 +44,7 @@ export function useHistoryState<T = any>(defaultValue?: T): UseHistoryStateRetur
 	}
 
 	function newest() {
-		const index = history.state.length - 1;
-		go(index);
+		go(history.state.length - 1);
 	}
 
 	function forward() {
