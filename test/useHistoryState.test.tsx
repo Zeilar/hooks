@@ -1,13 +1,13 @@
 import { act, renderHook } from "@testing-library/react-hooks";
-import { useStateHistory } from "../src/useStateHistory";
+import { useHistoryState } from "../src/useHistoryState";
 
 describe("it", () => {
 	it("should render without crashing", () => {
-		renderHook(() => useStateHistory());
+		renderHook(() => useHistoryState());
 	});
 
 	it("should add a state", () => {
-		const { result } = renderHook(() => useStateHistory());
+		const { result } = renderHook(() => useHistoryState());
 		act(() => {
 			result.current.push(1, 2, 3);
 		});
@@ -16,7 +16,7 @@ describe("it", () => {
 	});
 
 	it("should go back", () => {
-		const { result } = renderHook(() => useStateHistory());
+		const { result } = renderHook(() => useHistoryState());
 		act(() => {
 			result.current.push(1, 2, 3);
 		});
@@ -28,7 +28,7 @@ describe("it", () => {
 	});
 
 	it("should go forward", () => {
-		const { result } = renderHook(() => useStateHistory());
+		const { result } = renderHook(() => useHistoryState());
 		act(() => {
 			result.current.push(1, 2, 3);
 		});
@@ -43,7 +43,7 @@ describe("it", () => {
 	});
 
 	it("should go to index", () => {
-		const { result } = renderHook(() => useStateHistory());
+		const { result } = renderHook(() => useHistoryState());
 		act(() => {
 			result.current.push(1, 2, 3);
 		});
@@ -55,7 +55,7 @@ describe("it", () => {
 	});
 
 	it("should clear the history", () => {
-		const { result } = renderHook(() => useStateHistory());
+		const { result } = renderHook(() => useHistoryState());
 		act(() => {
 			result.current.clear();
 		});
@@ -64,7 +64,7 @@ describe("it", () => {
 	});
 
 	it("should remove the oldest", () => {
-		const { result } = renderHook(() => useStateHistory());
+		const { result } = renderHook(() => useHistoryState());
 		act(() => {
 			result.current.push(1, 2, 3);
 		});

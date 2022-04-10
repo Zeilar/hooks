@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useArray } from "./useArray";
 
-export interface UseStateHistoryReturn<T = any> {
+export interface UseHistoryStateReturn<T = any> {
 	/**
 	 * Should only be used when absolutely necessary.
 	 */
@@ -23,9 +23,9 @@ export interface UseStateHistoryReturn<T = any> {
 
 /**
  * Useful if you want a state that saves previous values, where you can go back and forth.
- * @example const formProgress = useStateHistory<FormStep>(firstStep);
+ * @example const formProgress = useHistoryState<FormStep>(firstStep);
  */
-export function useStateHistory<T = any>(defaultValue?: T): UseStateHistoryReturn<T> {
+export function useHistoryState<T = any>(defaultValue?: T): UseHistoryStateReturn<T> {
 	const history = useArray<T>(defaultValue ? [defaultValue] : []);
 	const [historyIndex, setHistoryIndex] = useState(0);
 
