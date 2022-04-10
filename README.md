@@ -12,15 +12,23 @@
 
 ### useHistoryState
 
+### useHover
+
 ### useImage
 
 ### useIsOnline
 
 ### useLocalStorage
 
+### useMap
+
 ### useObject
 
 ### useOnClickOutside
+
+### useOnMount
+
+### useOnUnmount
 
 ### useSessionStorage
 
