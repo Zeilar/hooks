@@ -1,7 +1,7 @@
 export type Title = string | (() => string);
 
 /**
- * Useful for router views.
+ * Useful for view components. Writes to the document title.
  * @example useTitle(`${BRAND} | Home`);
  */
 export function useTitle(title: Title) {

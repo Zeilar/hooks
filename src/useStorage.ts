@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 /**
- * Stub for useStorage and useLocalStorage, which should be used instead.
+ * Stub for useSessionStorage and useLocalStorage, which should be used instead.
  */
 export function useStorage<T = any>(storage: Storage, key: string, fallback?: any) {
 	const [data, setData] = useState<T>(() => {
