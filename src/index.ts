@@ -15,3 +15,5 @@ export * from "./useTheme";
 export * from "./useTitle";
 export * from "./useTimeout";
 export * from "./useWindowSize";
+export * from "./useDisclosure";
+export * from "./useStateHistory";
