@@ -32,6 +32,9 @@ export function useObject<T = AnyObject>(defaultValue: T = {} as T): UseObjectRe
 		});
 	}
 
+	/**
+	 * Keep in mind using this may cause bugs as state is no longer of type T.
+	 */
 	function empty() {
 		setState({} as T);
 	}
