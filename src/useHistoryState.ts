@@ -37,15 +37,15 @@ export function useHistoryState<T = any>(defaultValue?: T): UseHistoryStateRetur
 	const hasNext = hasIndex(historyIndex + 1);
 
 	function push(...items: T[]) {
-		history.push(...items);
-		setHistoryIndex(history.state.length - 1 + items.length); // A little unsafe but most practical solution I could think of
+		if (items.length > 0) {
+			history.push(...items);
+			setHistoryIndex(history.state.length - 1 + items.length); // A little unsafe but most practical solution I could think of
+		}
 	}
 
 	function newest() {
 		const index = history.state.length - 1;
-		if (hasIndex(index)) {
-			setHistoryIndex(index);
-		}
+		go(index);
 	}
 
 	function forward() {
