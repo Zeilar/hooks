@@ -43,27 +43,31 @@ export function useStateHistory<T = any>(defaultValue?: T): UseStateHistoryRetur
 
 	function newest() {
 		const index = history.state.length - 1;
-		if (hasIndex(index)) {
-			setHistoryIndex(index);
+		if (!hasIndex(index)) {
+			return;
 		}
+		setHistoryIndex(index);
 	}
 
 	function forward() {
-		if (hasNext) {
-			setHistoryIndex(p => p + 1);
+		if (!hasNext) {
+			return;
 		}
+		setHistoryIndex(p => p + 1);
 	}
 
 	function back() {
-		if (hasPrevious) {
-			setHistoryIndex(p => p - 1);
+		if (!hasPrevious) {
+			return;
 		}
+		setHistoryIndex(p => p - 1);
 	}
 
 	function go(index: number) {
-		if (hasIndex(index)) {
-			setHistoryIndex(index);
+		if (!hasIndex(index)) {
+			return;
 		}
+		setHistoryIndex(index);
 	}
 
 	function oldest() {
