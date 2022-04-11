@@ -1,3 +1,4 @@
+export * from "./useAsync";
 export * from "./useArray";
 export * from "./useDisclosure";
 export * from "./useEventListener";
@@ -6,6 +7,7 @@ export * from "./useGlobalEvent";
 export * from "./useHistoryState";
 export * from "./useHover";
 export * from "./useImage";
+export * from "./useIsMounted";
 export * from "./useIsOnline";
 export * from "./useLocalStorage";
 export * from "./useMap";

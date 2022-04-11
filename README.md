@@ -1,5 +1,7 @@
 # React Hooks
 
+### useAsync
+
 ### useArray
 
 ### useDisclosure
@@ -15,6 +17,8 @@
 ### useHover
 
 ### useImage
+
+### useIsMounted
 
 ### useIsOnline
 
