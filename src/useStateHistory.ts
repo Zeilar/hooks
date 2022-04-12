@@ -17,6 +17,7 @@ export interface UseStateHistoryReturn<T = any> {
 	oldest(): void;
 	newest(): void;
 	clear(): void;
+	reset(): void;
 	hasNext: boolean;
 	hasPrevious: boolean;
 }
@@ -79,6 +80,11 @@ export function useStateHistory<T = any>(defaultValue?: T): UseStateHistoryRetur
 		history.empty();
 	}
 
+	function reset() {
+		setHistoryIndex(0);
+		history.setState(defaultValue ? [defaultValue] : []);
+	}
+
 	return {
 		state: history.state[historyIndex],
 		history: history.state,
@@ -93,6 +99,7 @@ export function useStateHistory<T = any>(defaultValue?: T): UseStateHistoryRetur
 		newest,
 		hasNext,
 		hasPrevious,
-		clear
+		clear,
+		reset
 	};
 }
