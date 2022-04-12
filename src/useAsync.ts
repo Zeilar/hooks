@@ -6,6 +6,10 @@ export interface UseAsyncReturn<T = any, E = any> {
 	result: T | undefined;
 }
 
+/**
+ * Useful for resolving promises with states.
+ * const { result, loading, error } = useAsync(promise);
+ */
 export function useAsync<T = any, E = any>(
 	promise: Promise<T> | (() => Promise<T>),
 	initialValue?: T
