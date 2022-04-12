@@ -17,8 +17,8 @@ export interface UseObjectReturn<T = AnyObject> {
  * Useful for operations that require mutating the state object.
  * @example const { state, set, remove, empty } = useObject<Record<any, any>>();
  */
-export function useObject<T = AnyObject>(defaultValue: T = {} as T): UseObjectReturn<T> {
-	const [state, setState] = useState(defaultValue);
+export function useObject<T = AnyObject>(initialValue: T = {} as T): UseObjectReturn<T> {
+	const [state, setState] = useState(initialValue);
 
 	function set(key: keyof T, value: any) {
 		setState(state => ({ ...state, [key]: value }));

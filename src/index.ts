@@ -1,5 +1,5 @@
-export * from "./useAsync";
 export * from "./useArray";
+export * from "./useAsync";
 export * from "./useDisclosure";
 export * from "./useEventListener";
 export * from "./useFetch";
@@ -18,6 +18,6 @@ export * from "./useOnUnmount";
 export * from "./useSessionStorage";
 export * from "./useStorage";
 export * from "./useTheme";
-export * from "./useTitle";
 export * from "./useTimeout";
+export * from "./useTitle";
 export * from "./useWindowSize";

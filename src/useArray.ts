@@ -45,10 +45,10 @@ export function useArray<T = any>(initialState: T[] | (() => T[])): UseArrayRetu
 		});
 	}
 
-	function unshift() {
+	function unshift(...items: T[]) {
 		setState(state => {
 			const copy = [...state];
-			copy.shift();
+			copy.unshift(...items);
 			return copy;
 		});
 	}
