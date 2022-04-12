@@ -17,6 +17,7 @@ export interface UseHistoryStateReturn<T = any> {
 	oldest(): void;
 	newest(): void;
 	clear(): void;
+	reset(): void;
 	hasNext: boolean;
 	hasPrevious: boolean;
 }
@@ -25,8 +26,15 @@ export interface UseHistoryStateReturn<T = any> {
  * Useful if you want a state that saves previous values, where you can go back and forth.
  * @example const formProgress = useHistoryState<FormStep>(firstStep);
  */
-export function useHistoryState<T = any>(defaultValue?: T): UseHistoryStateReturn<T> {
-	const history = useArray<T>(defaultValue ? [defaultValue] : []);
+export function useHistoryState<T = any>(initialState?: T | T[]): UseHistoryStateReturn<T> {
+	function resoveInitialState() {
+		if (!initialState) {
+			return [];
+		}
+		return Array.isArray(initialState) ? initialState : [initialState];
+	}
+
+	const history = useArray<T>(resoveInitialState);
 	const [historyIndex, setHistoryIndex] = useState(0);
 
 	function hasIndex(index: number) {
@@ -70,8 +78,13 @@ export function useHistoryState<T = any>(defaultValue?: T): UseHistoryStateRetur
 	}
 
 	function clear() {
-		setHistoryIndex(0);
+		oldest();
 		history.empty();
+	}
+
+	function reset() {
+		oldest();
+		history.setState(resoveInitialState);
 	}
 
 	return {
@@ -88,6 +101,7 @@ export function useHistoryState<T = any>(defaultValue?: T): UseHistoryStateRetur
 		newest,
 		hasNext,
 		hasPrevious,
-		clear
+		clear,
+		reset
 	};
 }
