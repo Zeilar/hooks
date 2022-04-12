@@ -5,7 +5,7 @@ export interface Options {
 }
 
 /**
- * Useful for closing menu when clicking outside.
+ * Useful for closing menus when clicking outside.
  * @example const ref = useOnClickOutside(close);
  */
 export function useOnClickOutside<T extends HTMLElement = HTMLDivElement>(callback: () => void, options: Options = {}) {

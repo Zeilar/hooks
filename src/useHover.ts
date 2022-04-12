@@ -5,8 +5,12 @@ export interface UseHoverReturn<T extends HTMLElement = HTMLDivElement> {
 	hovered: boolean;
 }
 
+/**
+ * Useful for hover logic that may not be easy, or even doable in CSS.
+ * @example const isHovered = useHover();
+ */
 export function useHover<T extends HTMLElement = HTMLDivElement>(): UseHoverReturn<T> {
-	const [hovered, setHovered] = useState(false);
+	const [isHovered, setIsHovered] = useState(false);
 	const ref = useRef<T>(null);
 
 	useEffect(() => {
@@ -17,11 +21,11 @@ export function useHover<T extends HTMLElement = HTMLDivElement>(): UseHoverRetu
 		}
 
 		function onMouseEnter() {
-			setHovered(true);
+			setIsHovered(true);
 		}
 
 		function onMouseLeave() {
-			setHovered(false);
+			setIsHovered(false);
 		}
 
 		element.addEventListener("mouseenter", onMouseEnter);
@@ -33,5 +37,5 @@ export function useHover<T extends HTMLElement = HTMLDivElement>(): UseHoverRetu
 		};
 	}, []);
 
-	return { ref, hovered };
+	return { ref, hovered: isHovered };
 }
