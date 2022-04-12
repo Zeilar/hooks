@@ -14,7 +14,7 @@ export interface UseArrayReturn<T = any> {
 	pop(): void;
 	reverse(): void;
 	shift(): void;
-	unshift(): void;
+	unshift(...items: T[]): void;
 	fill(value: T, start?: number | undefined, end?: number | undefined): void;
 }
 
