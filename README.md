@@ -1,8 +1,8 @@
 # React Hooks
 
-### useAsync
-
 ### useArray
+
+### useAsync
 
 ### useDisclosure
 
