@@ -40,8 +40,8 @@
 
 ### useTheme
 
-### useTitle
-
 ### useTimeout
+
+### useTitle
 
 ### useWindowSize
