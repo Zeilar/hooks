@@ -77,4 +77,17 @@ describe("it", () => {
 		expect(result.current.state).toEqual(2);
 		expect(result.current.historyIndex).toEqual(0);
 	});
+
+	it("should reset the state", () => {
+		const testObj = { test: "test" };
+		const { result } = renderHook(() => useHistoryState<any>(testObj));
+		act(() => {
+			result.current.push({});
+		});
+		act(() => {
+			result.current.reset();
+		});
+		expect(result.current.history).toEqual([testObj]);
+		expect(result.current.historyIndex).toEqual(0);
+	});
 });
