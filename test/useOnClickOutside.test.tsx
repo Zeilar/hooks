@@ -24,12 +24,6 @@ describe("it", () => {
 		expect(baseElement).toBeTruthy();
 	});
 
-	it("should render without crashing", () => {
-		const fn = jest.fn();
-		const { baseElement } = render(<UseOnClickOutside callback={fn} />);
-		expect(baseElement).toBeTruthy();
-	});
-
 	it("should fire callback on mousedown", () => {
 		const fn = jest.fn();
 		const { getByTestId } = render(<UseOnClickOutside callback={fn} />);
