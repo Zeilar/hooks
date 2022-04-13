@@ -25,6 +25,11 @@ export function useAsync<T = any, E = any>(
 			.then(setResult)
 			.catch(setError)
 			.finally(() => setLoading(false));
+		return () => {
+			setResult(undefined);
+			setError(undefined);
+			setLoading(true);
+		};
 	}, [promise]);
 
 	return { loading, result, error };
