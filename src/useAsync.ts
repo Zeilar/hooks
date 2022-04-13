@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 export interface UseAsyncReturn<T = any, E = any> {
 	loading: boolean;
-	error: E;
+	error: E | undefined;
 	result: T | undefined;
 }
 
@@ -13,10 +13,10 @@ export interface UseAsyncReturn<T = any, E = any> {
 export function useAsync<T = any, E = any>(
 	promise: Promise<T> | (() => Promise<T>),
 	initialValue?: T
-): UseAsyncReturn<T> {
+): UseAsyncReturn<T, E> {
 	const [loading, setLoading] = useState(true);
 	const [result, setResult] = useState<T | undefined>(initialValue);
-	const [error, setError] = useState<E>();
+	const [error, setError] = useState<E | undefined>();
 
 	useEffect(() => {
 		setLoading(true);
