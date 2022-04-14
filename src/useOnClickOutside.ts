@@ -27,7 +27,7 @@ export function useOnClickOutside<T extends HTMLElement = HTMLDivElement>(callba
 				return;
 			}
 			// Do nothing on right click
-			if (e.button === 3) {
+			if (e.button === 2) {
 				return;
 			}
 			if (!element.contains(e.target as Node)) {
