@@ -22,11 +22,13 @@ export function useOnClickOutside<T extends HTMLElement = HTMLDivElement>(callba
 		}
 
 		function clickHandler(e: MouseEvent) {
+			console.log(e.button, rightClick);
 			if (!element) {
 				console.warn("Ref is not assigned to an element.");
 				return;
 			}
-			if (rightClick === false && e.button === 3) {
+			// Do nothing on right click
+			if (e.button === 3) {
 				return;
 			}
 			if (!element.contains(e.target as Node)) {
