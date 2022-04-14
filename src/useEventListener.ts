@@ -6,7 +6,7 @@ import { useEffect, useRef } from "react";
  */
 export function useEventListener<T extends HTMLElement = HTMLDivElement>(
 	event: keyof GlobalEventHandlersEventMap,
-	callback: () => any
+	callback: (event: Event) => any
 ) {
 	const callbackRef = useRef(callback);
 	const elementRef = useRef<T>(null);
