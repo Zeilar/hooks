@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 
 export interface Options {
 	mouseup?: boolean;
+	rightClick?: boolean;
 }
 
 /**
@@ -10,7 +11,7 @@ export interface Options {
  */
 export function useOnClickOutside<T extends HTMLElement = HTMLDivElement>(callback: () => void, options: Options = {}) {
 	const ref = useRef<T>(null);
-	const { mouseup } = options;
+	const { mouseup, rightClick } = options;
 	const event = mouseup ? "mouseup" : "mousedown";
 
 	useEffect(() => {
@@ -21,16 +22,15 @@ export function useOnClickOutside<T extends HTMLElement = HTMLDivElement>(callba
 		}
 
 		function clickHandler(e: MouseEvent) {
-			try {
-				if (!element) {
-					console.warn("Ref is not assigned to an element.");
-					return;
-				}
-				if (!element.contains(e.target as Node)) {
-					callback();
-				}
-			} catch (error) {
-				console.error(error);
+			if (!element) {
+				console.warn("Ref is not assigned to an element.");
+				return;
+			}
+			if (rightClick === false && e.button === 3) {
+				return;
+			}
+			if (!element.contains(e.target as Node)) {
+				callback();
 			}
 		}
 
@@ -39,7 +39,7 @@ export function useOnClickOutside<T extends HTMLElement = HTMLDivElement>(callba
 		return () => {
 			document.removeEventListener(event, clickHandler);
 		};
-	}, [callback, event]);
+	}, [callback, event, rightClick]);
 
 	return ref;
 }
