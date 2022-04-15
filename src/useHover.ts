@@ -2,12 +2,12 @@ import { useEffect, useRef, useState } from "react";
 
 export interface UseHoverReturn<T extends HTMLElement = HTMLDivElement> {
 	ref: React.RefObject<T>;
-	hovered: boolean;
+	isHovered: boolean;
 }
 
 /**
  * Useful for hover logic that may not be easy, or even doable in CSS.
- * @example const isHovered = useHover();
+ * @example const { ref, isHovered} = useHover();
  */
 export function useHover<T extends HTMLElement = HTMLDivElement>(): UseHoverReturn<T> {
 	const [isHovered, setIsHovered] = useState(false);
@@ -37,5 +37,5 @@ export function useHover<T extends HTMLElement = HTMLDivElement>(): UseHoverRetu
 		};
 	}, []);
 
-	return { ref, hovered: isHovered };
+	return { ref, isHovered };
 }
