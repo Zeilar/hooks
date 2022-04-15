@@ -1,30 +1,31 @@
 import { useEffect, useState } from "react";
+import { Status } from "./types";
 
 export interface UseImageReturn {
-	isLoaded: boolean;
+	isLoading: boolean;
 	isError: boolean;
+	isSuccess: boolean;
 }
 
 /**
  * Useful for handling image loading state, like showing a placeholder in its place.
- * @example const { isLoaded, isError } = useImage(src, () => console.log("Image loaded"));
+ * @example const { isError, isLoading, isSuccess } = useImage(src, () => console.log("Image loaded"));
  */
 export function useImage(src: string, onImageLoad?: () => void): UseImageReturn {
-	const [isLoaded, setIsloaded] = useState(false);
-	const [isError, setIsError] = useState<boolean>(false);
+	const [status, setStatus] = useState<Status>("loading");
 
 	useEffect(() => {
 		const image = new Image();
 		image.src = src;
+		setStatus("loading");
 		image.onload = () => {
-			setIsloaded(true);
+			setStatus("success");
 			if (onImageLoad) {
 				onImageLoad();
 			}
 		};
 		image.onerror = () => {
-			setIsloaded(true);
-			setIsError(true);
+			setStatus("error");
 		};
 		return () => {
 			image.onload = null;
@@ -32,5 +33,9 @@ export function useImage(src: string, onImageLoad?: () => void): UseImageReturn 
 		};
 	}, [src, onImageLoad]);
 
-	return { isLoaded, isError };
+	return {
+		isSuccess: status === "success",
+		isError: status === "error",
+		isLoading: status === "loading"
+	};
 }

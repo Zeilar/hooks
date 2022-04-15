@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
+import { Status } from "./types";
 
-export type Status = "loading" | "error" | "success";
 export type Dependencies = Record<any, boolean>;
 
 /**
