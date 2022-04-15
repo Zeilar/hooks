@@ -18,18 +18,24 @@ export function useImage(src: string, onImageLoad?: () => void): UseImageReturn 
 		const image = new Image();
 		image.src = src;
 		setStatus("loading");
-		image.onload = () => {
+
+		function onLoad() {
 			setStatus("success");
 			if (onImageLoad) {
 				onImageLoad();
 			}
-		};
-		image.onerror = () => {
+		}
+
+		function onError() {
 			setStatus("error");
-		};
+		}
+
+		image.addEventListener("load", onLoad);
+		image.addEventListener("error", onError);
+
 		return () => {
-			image.onload = null;
-			image.onerror = null;
+			image.removeEventListener("load", onLoad);
+			image.removeEventListener("error", onError);
 		};
 	}, [src, onImageLoad]);
 
