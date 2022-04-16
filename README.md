@@ -1,3 +1,3 @@
 # @zeilar/hooks 🛠
 
-## [Demo and documentation](https://hooks.angelin.dev)
+### [Demo and documentation](https://hooks.angelin.dev)
