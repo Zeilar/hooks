@@ -1,3 +1,4 @@
+import { useOnUnmount } from "@zeilar/hooks";
 import { useCallback, useEffect, useRef } from "react";
 
 export interface UseTimeoutReturn {
@@ -27,8 +28,7 @@ export function useTimeout(callback: () => void, delay: number): UseTimeoutRetur
 		start();
 	}, [callback, start]);
 
-	// Unmount
-	useEffect(() => clear, []);
+	useOnUnmount(clear);
 
 	return { clear, ref: timeoutRef.current };
 }
