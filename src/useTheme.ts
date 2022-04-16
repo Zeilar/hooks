@@ -14,7 +14,7 @@ export function useTheme(fallback?: Theme) {
 		if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) {
 			return "light";
 		}
-		return fallback ?? "light";
+		return fallback ?? "dark";
 	});
 
 	function toggle() {
