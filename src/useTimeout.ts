@@ -18,7 +18,8 @@ export function useTimeout(callback: () => void, delay: number): UseTimeoutRetur
 	}
 
 	const start = useCallback(() => {
-		setTimeout(callback, delay);
+		const timeout = window.setTimeout(callback, delay);
+		timeoutRef.current = timeout;
 	}, [callback, delay]);
 
 	useEffect(() => {
@@ -26,7 +27,9 @@ export function useTimeout(callback: () => void, delay: number): UseTimeoutRetur
 		start();
 	}, [callback, start]);
 
-	useOnUnmount(clear);
+	useOnUnmount(() => {
+		clear();
+	});
 
 	return { clear, ref: timeoutRef.current };
 }
