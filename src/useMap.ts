@@ -9,14 +9,15 @@ export interface UseMapReturn<K, V> {
 	set(key: K, value: V): void;
 	remove(key: K): void;
 	clear(): void;
+	reset(): void;
 }
 
 /**
  * Useful for using a state Map without mutating state.
  * @example const map = useMap();
  */
-export function useMap<K, V>(initial?: Map<K, V>): UseMapReturn<K, V> {
-	const [state, setState] = useState<Map<K, V>>(initial ?? new Map<K, V>());
+export function useMap<K, V>(initialState: Map<K, V> = new Map<K, V>()): UseMapReturn<K, V> {
+	const [state, setState] = useState<Map<K, V>>(initialState);
 
 	function set(key: K, value: V) {
 		setState(p => {
@@ -38,5 +39,9 @@ export function useMap<K, V>(initial?: Map<K, V>): UseMapReturn<K, V> {
 		setState(new Map<K, V>());
 	}
 
-	return { state, set, remove, clear, setState };
+	function reset() {
+		setState(initialState);
+	}
+
+	return { state, set, remove, clear, setState, reset };
 }

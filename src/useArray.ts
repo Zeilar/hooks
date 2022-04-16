@@ -16,6 +16,7 @@ export interface UseArrayReturn<T = any> {
 	shift(): void;
 	unshift(...items: T[]): void;
 	fill(value: T, start?: number | undefined, end?: number | undefined): void;
+	reset(): void;
 }
 
 /**
@@ -86,5 +87,9 @@ export function useArray<T = any>(initialState: T[] | (() => T[]) = []): UseArra
 		});
 	}
 
-	return { state, push, filter, remove, empty, sort, pop, reverse, shift, unshift, fill, setState };
+	function reset() {
+		setState(initialState);
+	}
+
+	return { state, push, filter, remove, empty, sort, pop, reverse, shift, unshift, fill, setState, reset };
 }
