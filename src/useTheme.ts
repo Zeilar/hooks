@@ -6,7 +6,7 @@ export type Theme = "light" | "dark";
  * Useful for dynamically changing theme.
  * @example const [theme, setTheme, toggleTheme] = useTheme("dark");
  */
-export function useTheme(fallback?: Theme) {
+export function useTheme(fallback: Theme = "dark") {
 	const [theme, setTheme] = useState<Theme>(() => {
 		if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
 			return "dark";
@@ -14,7 +14,7 @@ export function useTheme(fallback?: Theme) {
 		if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) {
 			return "light";
 		}
-		return fallback ?? "dark";
+		return fallback;
 	});
 
 	function toggle() {
