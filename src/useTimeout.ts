@@ -27,9 +27,7 @@ export function useTimeout(callback: () => void, delay: number): UseTimeoutRetur
 		start();
 	}, [callback, start]);
 
-	useOnUnmount(() => {
-		clear();
-	});
+	useOnUnmount(clear);
 
 	return { clear, ref: timeoutRef.current };
 }
