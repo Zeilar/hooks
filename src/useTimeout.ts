@@ -14,9 +14,7 @@ export function useTimeout(callback: () => void, delay: number): UseTimeoutRetur
 	const timeoutRef = useRef<number>();
 
 	function clear() {
-		if (timeoutRef.current) {
-			clearTimeout(timeoutRef.current);
-		}
+		clearTimeout(timeoutRef.current);
 	}
 
 	const start = useCallback(() => {
