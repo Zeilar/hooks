@@ -1,5 +1,5 @@
 {
-	"name": "usehooks",
+	"name": "react-use-hooks",
 	"version": "1.0.0",
 	"license": "MIT",
 	"main": "dist/index.js",
@@ -15,8 +15,7 @@
 	"keywords": [
 		"react",
 		"reactjs",
-		"usehook",
-		"usehooks",
+		"use",
 		"hooks",
 		"hook",
 		"react-hooks",
