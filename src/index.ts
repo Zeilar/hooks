@@ -1,5 +1,6 @@
 export * from "./useArray";
 export * from "./useAsync";
+export * from "./useBodyScroll";
 export * from "./useDisclosure";
 export * from "./useEventListener";
 export * from "./useFetch";
