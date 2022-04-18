@@ -1,5 +1,6 @@
 {
 	"name": "react-use-hooks",
+	"description": "React hooks with no dependencies, written in TypeScript.",
 	"version": "1.0.0",
 	"license": "MIT",
 	"main": "dist/index.js",
