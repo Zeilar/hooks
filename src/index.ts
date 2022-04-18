@@ -1,6 +1,5 @@
 export * from "./useArray";
 export * from "./useAsync";
-export * from "./useBodyScroll";
 export * from "./useDisclosure";
 export * from "./useEventListener";
 export * from "./useFetch";
@@ -16,6 +15,7 @@ export * from "./useObject";
 export * from "./useOnClickOutside";
 export * from "./useOnMount";
 export * from "./useOnUnmount";
+export * from "./useScrollLock";
 export * from "./useSessionStorage";
 export * from "./useStorage";
 export * from "./useTheme";
