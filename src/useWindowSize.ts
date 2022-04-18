@@ -2,16 +2,16 @@ import { useState } from "react";
 import { useGlobalEvent } from "./useGlobalEvent";
 
 export interface Size {
-	x: number;
-	y: number;
+	width: number;
+	height: number;
 }
 
 /**
  * Useful for separating mobile and desktop logic.
- * @example const { x, y } = useWindowsize();
+ * @example const { width, height } = useWindowsize();
  */
 export function useWindowSize() {
-	const [size, setSize] = useState<Size>({ x: window.innerWidth, y: window.innerHeight });
-	useGlobalEvent("resize", () => setSize({ x: window.innerWidth, y: window.innerHeight }));
+	const [size, setSize] = useState<Size>({ width: window.innerWidth, height: window.innerHeight });
+	useGlobalEvent("resize", () => setSize({ width: window.innerWidth, height: window.innerHeight }));
 	return size;
 }
