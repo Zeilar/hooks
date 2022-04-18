@@ -1,5 +1,5 @@
 {
-	"name": "@zeilar/hooks",
+	"name": "usehooks",
 	"version": "1.11.1",
 	"license": "MIT",
 	"main": "dist/index.js",
@@ -15,11 +15,14 @@
 	"keywords": [
 		"react",
 		"reactjs",
+		"usehook",
+		"usehooks",
 		"hooks",
 		"hook",
 		"react-hooks",
 		"typescript",
 		"javascript",
+		"js",
 		"ts",
 		"tsx",
 		"jsx"
