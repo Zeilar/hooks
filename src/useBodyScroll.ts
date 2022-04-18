@@ -2,8 +2,15 @@ import { useEffect, useRef, useState } from "react";
 import { useOnUnmount } from "./useOnUnmount";
 
 export function isBodyScrollable() {
-	const bodyOverflowStyle = getComputedStyle(document.body).overflowY;
-	return bodyOverflowStyle === "auto" || bodyOverflowStyle === "visible";
+	switch (getComputedStyle(document.body).overflowY) {
+		case "auto":
+		case "visible":
+			return true;
+		case "hidden":
+			return false;
+		default:
+			return true;
+	}
 }
 
 /**
