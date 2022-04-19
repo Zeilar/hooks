@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Status } from "./types";
 
 export interface UseImageReturn {
+	status: Status;
 	isLoading: boolean;
 	isError: boolean;
 	isSuccess: boolean;
@@ -40,6 +41,7 @@ export function useImage(src: string, onImageLoad?: () => void): UseImageReturn 
 	}, [src, onImageLoad]);
 
 	return {
+		status,
 		isSuccess: status === "success",
 		isError: status === "error",
 		isLoading: status === "loading"

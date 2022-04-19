@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export interface UseMapReturn<K, V> {
+export interface UseMapReturn<K = any, V = any> {
 	/**
 	 * Should only be used when absolutely necessary.
 	 */
@@ -16,20 +16,20 @@ export interface UseMapReturn<K, V> {
  * Useful for using a state Map without mutating state.
  * @example const map = useMap();
  */
-export function useMap<K, V>(initialState: Map<K, V> = new Map<K, V>()): UseMapReturn<K, V> {
+export function useMap<K = any, V = any>(initialState: Map<K, V> = new Map<K, V>()): UseMapReturn<K, V> {
 	const [state, setState] = useState<Map<K, V>>(initialState);
 
 	function set(key: K, value: V) {
-		setState(p => {
-			const newMap = new Map<K, V>(p);
+		setState(state => {
+			const newMap = new Map<K, V>(state);
 			newMap.set(key, value);
 			return newMap;
 		});
 	}
 
 	function remove(key: K) {
-		setState(p => {
-			const newMap = new Map<K, V>(p);
+		setState(state => {
+			const newMap = new Map<K, V>(state);
 			newMap.delete(key);
 			return newMap;
 		});

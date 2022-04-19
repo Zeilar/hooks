@@ -23,7 +23,7 @@ export function useDisclosure(initialState: boolean = false) {
 	}
 
 	function toggle() {
-		setIsOpen(p => !p);
+		setIsOpen(open => !open);
 	}
 
 	return { isOpen, open, close, toggle };

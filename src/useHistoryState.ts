@@ -57,13 +57,13 @@ export function useHistoryState<T = any>(initialState?: T | T[]): UseHistoryStat
 
 	function forward() {
 		if (hasNext) {
-			setHistoryIndex(p => p + 1);
+			setHistoryIndex(index => index + 1);
 		}
 	}
 
 	function back() {
 		if (hasPrevious) {
-			setHistoryIndex(p => p - 1);
+			setHistoryIndex(index => index - 1);
 		}
 	}
 
