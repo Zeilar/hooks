@@ -1,4 +1,4 @@
-import { useOnUnmount } from "@zeilar/hooks";
+import { useOnUnmount } from "./useOnUnmount";
 import { useCallback, useEffect, useRef } from "react";
 
 export interface UseTimeoutReturn {
