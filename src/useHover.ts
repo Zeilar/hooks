@@ -7,7 +7,7 @@ export interface UseHoverReturn<T extends HTMLElement = HTMLDivElement> {
 
 /**
  * Useful for hover logic that may not be easy, or even doable in CSS.
- * @example const { ref, isHovered} = useHover();
+ * @example const { ref, isHovered } = useHover();
  */
 export function useHover<T extends HTMLElement = HTMLDivElement>(): UseHoverReturn<T> {
 	const [isHovered, setIsHovered] = useState(false);

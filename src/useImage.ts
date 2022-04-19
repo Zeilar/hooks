@@ -10,7 +10,7 @@ export interface UseImageReturn {
 
 /**
  * Useful for handling image loading state, like showing a placeholder in its place.
- * @example const { isError, isLoading, isSuccess } = useImage(src, () => console.log("Image loaded"));
+ * @example const { isError, isLoading, isSuccess, status } = useImage(src, () => console.log("Image loaded"));
  */
 export function useImage(src: string, onImageLoad?: () => void): UseImageReturn {
 	const [status, setStatus] = useState<Status>("loading");
