@@ -36,7 +36,7 @@ export interface UseFetchErrorReturn<T = any> {
 
 /**
  * Useful for client side rendering.
- * @example const { data, isLoading, isSuccess, isError } = useFetch<Post[]>("/api/v1/posts");
+ * @example const { data, isLoading, isSuccess, isError, status } = useFetch<Post[]>("/api/v1/posts");
  */
 export function useFetch<T = any>(url: string, config?: RequestInit, fallback?: T) {
 	const [data, setData] = useState<T>(typeof fallback === "function" ? fallback() : fallback);
