@@ -7,6 +7,7 @@ export * from "./useGlobalEvent";
 export * from "./useHistoryState";
 export * from "./useHover";
 export * from "./useImage";
+export * from "./useInterval";
 export * from "./useIsMounted";
 export * from "./useIsOnline";
 export * from "./useLocalStorage";
