@@ -28,7 +28,7 @@ export interface UseHistoryStateReturn<T = any> {
  */
 export function useHistoryState<T = any>(initialState?: T | T[]): UseHistoryStateReturn<T> {
 	function resoveInitialState() {
-		if (!initialState) {
+		if (initialState === undefined) {
 			return [];
 		}
 		return Array.isArray(initialState) ? initialState : [initialState];
