@@ -1,7 +1,7 @@
 {
 	"name": "use-ful-hooks-ts",
 	"description": "React hooks with no dependencies, written in TypeScript.",
-	"version": "1.2.0",
+	"version": "1.2.1",
 	"license": "MIT",
 	"main": "dist/index.js",
 	"typings": "dist/index.d.ts",
